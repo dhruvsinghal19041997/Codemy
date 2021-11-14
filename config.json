@@ -1,0 +1,22 @@
+{
+  "params":
+  {
+    "blog_name": "Codemy",
+    "tag_line": "Learn by Code",
+    "local_server":"True",
+    "local_uri": "mysql://root:@localhost/dcode",
+    "prod_uri": "mysql://root:@localhost/dcode",
+    "fb_url": "https://facebook.com/codemy",
+    "gh_url": "https://github.com/dcode",
+    "tw_url": "https://twitter.com/LiveCodemy",
+    "telegram_url": "https://t.me/codemy_live",
+    "linkedin_url": "https://www.linkedin.com/in/singhaldhruv5/",
+    "discord_url": "https://discord.gg/XNpDG5Hj",
+    "gmail_user": "connect.codemy@gmail.com",
+    "gmail_app_password":  "tyuxwhddjmkpcwcq",
+    "post_count": 4,
+    "admin_user": "dextron",
+    "admin_pass": "dcode@dmin2021"
+
+  }
+}

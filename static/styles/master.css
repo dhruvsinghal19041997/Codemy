@@ -1,0 +1,153 @@
+html *
+{
+   font-family: nunito,Helvetica,Arial,sans-serif !important;
+
+}
+
+
+body{
+	background: 	#F0F0F0 !important;
+	line-height: 1.6;
+}
+
+div{
+line-height: 1.6;
+}
+
+h1,h2,h3,h4,h5,h6{
+line-height: 1.6;
+}
+
+.search-box{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+}
+
+.search-box input{
+	height:50px;
+	width: 0px;
+	padding: 0px 0px;
+	border-radius: 40px;
+	border:0px;
+	padding-right: 50px;
+	transition: 1s;
+}
+
+.search-box input:focus{
+	width:400px;
+	padding-left:20px;
+}
+
+.search-box:before{
+	content:"\f002";
+	font-family:'FontAwesome';
+	position: absolute;
+	right:18px;
+	line-height:50px;
+	color: #006990;
+
+}
+
+.nav-item{
+color: #006990;
+font-weight:bold;
+font-size: 20px;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #006990;
+}
+
+.dropdown-item{
+color: #006990 !important;
+}
+.dropdown-toggle{
+color: #006990 !important;
+font-weight:bold;
+}
+
+
+.fab-facebook-f:hover
+{
+color:#4267B2;
+}
+.fab-telegram:hover
+{
+color:#0088cc;
+}
+.fab-twitter:hover
+{
+color:#1DA1F2;
+}
+.fab-linkedin-in:hover
+{
+color:#0077b5;
+}
+
+.fab-discord:hover
+{
+color:#7289DA;
+}
+
+/*svg:hover{
+fill:#7289DA;
+}*/
+
+
+.footer{
+background:white;
+}
+
+.container{
+padding:5px;
+/*font-family: Arial;
+}
+@font-face {
+            font-family: "MyFont";
+            src: url("/static/fonts/MyFont.woff");*/
+        }
+
+a{
+text-decoration:none;
+color:black;
+}
+
+a:hover{
+color:#505050;
+}
+
+.btn{
+border-color: #006990 !important;
+color: #006990 !important;
+margin-right:5px;
+}
+
+.btn:hover {
+  background-color: #006990 !important;
+  color: white !important;
+}
+
+.errorcontainer{
+box-sizing: border-box;
+    position: relative;
+    height: 100vh;
+}
+
+.hrdivider {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.hrdivider span {
+  position: absolute;
+  top: 0px;
+  background: inherit;
+  padding: 0 20px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{%block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "successfully" in message%}
+                <div class="alert alert-success" role="alert">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<form action="/contact" method="post">
+    <div class="container" style="max-width:50%; background: white;padding:20px; margin-bottom:20px;margin-left: 220px;">
+
+        <h1><span style="font-size: 48px; color: grey">
+            <i class="fa fa-envelope"></i>
+            </span>GET IN TOUCH</h1>
+        <p style="margin-left:65px;">We will get back to you soon.</p>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" id="email" name="email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5"></textarea>
+        </div><br>
+        <button type="submit" class="btn btn-outline-primary">Send</button>
+    </div>
+</form>
+    {% endblock content %}

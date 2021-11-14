@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block title %}
+{{post.title}}
+{% endblock %}
+{% block metadata %}
+{% endblock %}
+{% block content%}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "successfully" in message%}
+                <div class="alert alert-success" role="alert">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div style="background:white;">
+<h1><b>{{post.title}}</b></h1>
+<p class="font-italic mb-0 medium"><b>By:</b> </b> {{post.username}}
+              <span style="float: right;" ><b>On:</b> {{post.date.strftime("%B %d, %Y")}} </span> </p><hr>
+<p>{{post.content|safe}}</p>
+    </div>
+<form class="form-floating" action="{{post.pid}}/postcomment" method="post" style="margin:10px;">
+  <textarea class="form-control" placeholder="Leave your comment here" id="comment" name="comment" style="height: 100px"></textarea>
+  <label for="comment">Leave your comment here</label><br>
+    <input type="submit" class="btn btn-outline-primary" value="Post Comment">
+</form>
+<h3 style="margin-left:10px;">Comments</h3>
+{% for comment in comments%}
+<div class="card p-3" style="margin-left:10px;">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="user d-flex flex-row align-items-center"><b>{{comment.author}}</b>
+
+        </div> <small><b>{{comment.date.strftime("%B %d, %Y")}}</b> </small>
+    </div>
+    <div class="action d-flex justify-content-between mt-2 align-items-center">
+        <div class="reply px-4"> {{comment.comment}} </div>
+
+    </div>
+</div>
+{% endfor%}
+<script>
+    window.setTimeout(function() {
+    $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 4000);
+</script>
+{% endblock %}

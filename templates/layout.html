@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block metadata %}{% endblock %}
+    <title>{% block title %}{% endblock %} </title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2780045924179717"
+     crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Capriola' rel='stylesheet'>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://use.fontawesome.com/6a31039094.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/master.css') }}">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+<!------ Include the above in your HEAD tag ---------->
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
+      data-auto-a11y="true"
+    ></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/" style="color:#006990;"><h3><b>{{params['blog_name']}}</b></h3></a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="{{url_for('home_page')}}" class="nav-item nav-link"><i class="fas fa-home"></i></a>
+                     <a class="nav-link nav-item" href="{{url_for('about_me')}}">About Me</a>
+                    <a class="nav-item nav-link" href="{{url_for('contact')}}">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tutorials</a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">Inbox</a>
+                            <a href="#" class="dropdown-item">Sent</a>
+                            <a href="#" class="dropdown-item">Drafts</a>
+                        </div>
+                    </div>
+                </div>
+                <form class="d-flex" action="/search_results" method="post">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search", name="search_data", id ="search_data">
+                        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
+
+                    </div>
+                </form>
+                      <span class="navbar-text">
+        {% if current_user.is_authenticated %}
+      <div class="btn-group">
+  <a class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user" style="color:#006990" ></i>
+    {{current_user.username}}
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="{{url_for('mypost')}}">My Posts</a></li>
+    <li><a class="dropdown-item" href="{{url_for('new_post')}}">Add Post</a></li>
+    <li><a class="dropdown-item" href="{{url_for('logout')}}">Logout</a></li>
+
+  </ul>
+          </div>
+
+      {%else%}
+
+        <a class="btn btn-outline-primary" href="{{url_for('dashboard')}}">Login</a>
+        <a class="btn btn-outline-primary" href="{{url_for('registeration')}}">Sign Up</a>
+      {% endif %}
+      </span>
+
+            </div>
+        </div>
+    </nav>
+
+<div class="row" style="background:#fcfcfc;">
+    <div class="col-md-9">
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+    <div class="col-md-3" >
+        <div style="background:white;margin:5px;padding:5px;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2780045924179717"
+		        crossorigin="anonymous"></script>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2780045924179717"
+     crossorigin="anonymous"></script>
+        </div>
+    </div>
+<br>
+<!-- Footer -->
+
+    <!-- Footer --></div>
+
+<footer style=" width:100%; background-color: #F0F0F0; !important;">
+     <div style="width: 100%; height: 30px; border-bottom: 2px solid black; text-align: center; margin:10px;">
+  <span style="font-size: 40px; background-color: #F0F0F0; padding: 0 10px;">
+      <b>Get In Touch</b> <!--Padding is optional-->
+  </span>
+</div><br><br>
+    <div align="center">
+     <a class="ic fab-facebook-f" href={{params['fb_url']}} target="_blank">
+            <i class="fab fa-facebook-f fa-lg white-text mx-md-3 mr-3 fa-2x"></i>Facebook</a>
+          <!-- Twitter -->
+          <a class="fab-telegram" href={{params['telegram_url']}} target="_blank">
+            <i class="fab fa-telegram fa-lg white-text mx-md-3 mr-3 fa-2x"></i>Telegram</a>
+          <!-- Google +-->
+          <a class="ic fab-twitter"  href={{params['tw_url']}} target="_blank">
+            <i class="fab fa-twitter fa-lg white-text mx-md-3 mr-3 fa-2x"> </i>Twitter</a>
+          <!--Linkedin -->
+          <a class="ic fab-linkedin-in"  href={{params['linkedin_url']}} target="_blank">
+            <i class="fab fa-linkedin-in fa-lg white-text mx-md-3 mr-3 fa-2x "> </i>LinkedIn</a>
+          <!--Instagram-->
+          <a class="ic fab-discord"  href={{params['discord_url']}} target="_blank">
+              <i class="fab fa-discord mx-md-3 mr-3 fa-2x"></i>Discord</a></div><br>
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <a href="https://codemy.live/">Codemy.live</a>
+  </div>
+</footer>
+</body>
+</html>

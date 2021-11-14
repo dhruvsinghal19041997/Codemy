@@ -1,0 +1,121 @@
+{% extends "layout.html"%}
+{% block content%}
+<div class="text-center" style="font-size:45px; color:grey; font-weight:bold; max-width:50%; margin-left:220px;">
+    USER LOGIN
+  </div>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "Invalid" in message%}
+                <div class="alert alert-danger" role="alert" style="max-width:50%;margin-left: 220px;">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "Successfull" in message%}
+                <div class="alert alert-success" role="alert" style="max-width:50%;margin-left: 220px;">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "confirming" in message%}
+                <div class="alert alert-success" role="alert" style="max-width:50%;margin-left: 220px;">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "already confirmed" in message%}
+                <div class="alert alert-success" role="alert" style="max-width:50%;margin-left: 220px;">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "updated" in message%}
+                <div class="alert alert-success" role="alert" style="max-width:50%;margin-left: 220px;">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "logged out" in message%}
+                <div class="alert alert-success" role="alert" style="max-width:50%;margin-left: 220px;">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "Reset link sent" in message%}
+                <div class="alert alert-warning" role="alert" style="max-width:100%;">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "expired" in message%}
+                <div class="alert alert-danger" role="alert" style="max-width:50%;margin-left: 220px;">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<form method="post" action="/dashboard">
+
+    <div class="container" style="max-width:50%;margin-left: 220px;" >
+    <div class="mb-3 px-10">
+        <input type="text" class="form-control" id="uname" name="uname" placeholder="Username">
+    </div>
+        <div class="mb-3">
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+        <a href="{{url_for('pass_reset')}}" style="color:#006990;"><u> Forgot Password?</u></a>
+        <center>
+            <div class="mb-3">
+   <input type="submit" class="btn btn-outline-primary" value="Login"/>
+        </div>
+        <pre>Don't have an account? <a href="{{url_for('registeration')}}"><u>Sign Up Here</u></a></pre>
+            </center>
+    </div>
+
+</form>
+
+<script>
+    window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 4000);
+</script>
+{% endblock content%}

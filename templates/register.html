@@ -1,0 +1,77 @@
+{% extends "layout.html"%}
+{% block title%}Register{% endblock title %}
+{% block content%}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "Successfull" in message%}
+                <div class="alert alert-success" role="alert">
+                    Registeration Successfull.You can now login!!
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="text-center" style="font-size: 45px; color: grey; font-weight:bold;max-width:50%;margin-left: 220px;">
+    CREATE ACCOUNT
+  </div>
+
+<form method="post" action="/register">
+
+    <div class="container" style="max-width:50%;margin-left: 220px;" >
+    <div class="mb-3 px-10">
+        <center><input type="text" class="form-control" id="uname" name="uname" placeholder="Username"></center>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {%if "username" in message%}
+                    <div class="flash" style="color:red; font-size:10px;">
+                        {{message}}
+                    </div>
+                {%endif%}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+    <div class="mb-3 px-10">
+        <center><input type="text" class="form-control" id="email" name="email" placeholder="Email Address"></center>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {%if "Invalid Email Address" in message%}
+                    <div class="flash" style="color:red; font-size:10px;">
+                        {{message}}
+                    </div>
+                {%endif%}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+        <div class="mb-3">
+    <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+            {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {%if "Password" in message%}
+                    <div class="flash" style="color:red; font-size:10px;">
+                        {{message}}
+                    </div>
+                {%endif%}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+        </div>
+        <div class="mb-3">
+    <input type="password" class="form-control" id="cpass" name="cpass" placeholder="Confirm Password">
+        </div>
+        <center>
+            <div class="mb-3">
+   <input type="submit" class="btn btn-outline-primary" value="Sign Up"/>
+        </div>
+    <pre>Have an account already? <a href="{{url_for('dashboard')}}"><u>Login Here</u></a></pre>
+            </center>
+    </div>
+
+</form>
+
+{% endblock content%}

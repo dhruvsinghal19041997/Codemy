@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% for post in posts%}
+    <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+        <a class="linker" href="/post/{{post.slug}}">
+                        <div class="media-body order-2 order-lg-1">
+                            <h5 class="mt-0 font-weight-bold mb-2">{{post.title}}</h5>
+                            <p class="font-italic mb-0 small">Posted on: {{post.date}}</p>
+                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                <h6 class="font-weight-bold my-2">{{post.content[0:90].lstrip('\n')|safe}}</h6>
+
+                            </div>
+                        </div>
+        </a>
+        <div class="d-grid gap-2 d-md-block">
+  <a class="btn btn-outline-primary" href="edit/{{post.pid}}" type="button" >Edit</a>
+  <a class="btn btn-outline-primary" href="delete/{{post.pid}}" type="button">Delete</a>
+</div>
+    </div> <!-- End -->
+               <hr>
+{% endfor%}
+
+{% endblock content%}

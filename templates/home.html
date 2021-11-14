@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block title %}
+Codemy
+{% endblock %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "now logged in" in message%}
+                <div class="alert alert-success" role="alert">
+                    Welcome {{current_user.username}}.{{message}}
+                </div>
+            {%elif "Post has been successfully added" in message%}
+                   <div class="alert alert-success" role="alert">
+                        {{message}}
+                   </div>
+
+             {%elif "deleted" in message%}
+                   <div class="alert alert-success" role="alert">
+                        {{message}}
+                   </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "confirm your account" in message%}
+                <div class="alert alert-warning" role="alert" style="max-width:100%;">
+                    {{message}}<a href="{{ url_for('resend_confirmation') }}" class="alert-link"><u>Resend Confirmation</u></a>.</p>
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {%if "already confirmed" in message%}
+                <div class="alert alert-success" role="alert" style="max-width:100%;">
+                    {{message}}
+                </div>
+            {%endif%}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+ <div class="text-center" style="font-size: 45px; color: #006990; font-weight:bold;max-width:100%;">
+    RECENT ARTICLES
+  </div>
+
+{%if posts|length%}
+<div class="row row-cols-1 g-4">
+{% for post in posts%}
+  <div class="col">
+      <a class="linker" href="/post/{{post.slug}}">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title"><b>{{post.title}}</b></h3>
+
+          <p class="font-italic mb-0 medium"><b>By:</b> {{post.username}}
+              <span style="float: right;" ><b>On:</b> {{post.date.strftime("%B %d, %Y")}} </span> </p>
+
+          <p class="card-text">{{ format_price(post.content)[0:250]|safe }}....</p>
+          <hr>
+        <div class="clearfix">
+    <div class="pull-left"><i class="far fa-comments"></i> Comments: {{post.com_count}}</div>
+    <div class="pull-right"><i class="far fa-eye"></i> Views: {{post.postviews}}</div>
+</div>
+    </div>
+  </div>
+{% endfor%}
+
+    {% if '#' in prev %}
+         <a class="btn btn-outline-primary float-end" href="{{next}}" style="float:right !important; max-width:150px; margin:10px;">Old Posts <i class="fas fa-forward"></i></a>
+    {% elif '#' in next %}
+        <a class="btn btn-outline-primary float-left" href="{{prev}}" style="max-width:150px; margin:10px;"><i class="fas fa-backward"></i> New Posts</a>
+    {% else %}
+        <a class="btn btn-outline-primary float-left" href="{{prev}}"style="max-width:150px; margin:10px;"><i class="fas fa-backward"></i> New Posts</a>
+        <a class="btn btn-outline-primary float-end" href="{{next}}" style="float:right !important; max-width:150px; margin:10px;">Old Posts <i class="fas fa-forward"></i></a>
+    {%endif%}
+    </div>
+{% else %}
+   <h3> We are unable to find what you are looking for. Want To Try Again? </h3>
+{% endif %}
+<script>
+    window.setTimeout(function() {
+    $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 4000);
+</script>
+
+{% endblock content %}
+
+
